@@ -1,0 +1,180 @@
+html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Уличный Фотограф // Официальный Сайт</title>
+    <style>
+        /* Стиль в духе 2000-х годов */
+        body {
+            background-color: #000000;
+            color: #00ff00; /* Неоново-зеленый текст */
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 20px;
+            background-image: radial-gradient(#113311 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        header {
+            text-align: center;
+            border: 3px double #00ff00;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: #111;
+        }
+
+        h1 {
+            text-shadow: 2px 2px #ff00ff; /* Розовая тень */
+            margin: 5px 0;
+            font-size: 28px;
+        }
+
+        marquee {
+            background: #ff00ff;
+            color: #000;
+            font-weight: bold;
+            padding: 3px;
+            border-bottom: 2px solid #00ff00;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Блок музыки (ностальгия) */
+        .winamp-box {
+            border: 2px solid #00ffff;
+            background: #222;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            font-size: 12px;
+            color: #00ffff;
+        }
+
+        /* Галерея */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .photo-card {
+            border: 2px dashed #ff00ff;
+            padding: 10px;
+            background: #111;
+            text-align: center;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: auto;
+            border: 1px solid #00ff00;
+            filter: contrast(1.2) saturate(1.4); /* Эффект старой цифровой камеры */
+        }
+
+        .photo-desc {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        /* Ссылки и Контакты */
+        .contacts {
+            margin-top: 30px;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            background: #111;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+        a:hover {
+            color: #ff00ff;
+            background: #00ff00;
+        }
+
+        /* Счетчик посещений */
+        .counter {
+            margin-top: 20px;
+            background: #333;
+            color: #ff0000;
+            font-family: monospace;
+            font-size: 20px;
+            padding: 5px 10px;
+            border: 2px solid #aaa;
+            letter-spacing: 3px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Бегущая строка -->
+    <marquee scrollamount="5">+++ ДОБРО ПОЖАЛОВАТЬ НА МОЮ ДОМАШНЮЮ СТРАНИЦУ +++ СВЕЖИЕ СНИМКИ С УЛИЦ ГОРОДА +++ ОБНОВЛЕНО СЕГОДНЯ +++</marquee>
+
+    <div class="container">
+        
+        <header>
+            <h1>STREET_PHOTOGRAPHER_2000</h1>
+            <p>Эстетика бетонных джунглей через дешевый объектив</p>
+        </header>
+
+        <!-- Плеер-заглушка -->
+        <div class="winamp-box">
+            <div> Now Playing: <b>Street_Vibe_2000.mp3</b></div>
+            <div style="margin-top:5px;">[  ▶ PLAY  ] [  ▉ STOP  ] █ █ █ ░ ░ ░ ░ </div>
+        </div>
+
+        <div>
+            <h2>Мои Снимки:</h2>
+        </div>
+
+        <!-- Галерея (Замените фото на свои) -->
+        <div class="gallery">
+            <div class="photo-card">
+                <!-- Вместо placeholder.com вставьте ссылки на свои фото на GitHub -->
+                <img src="https://placeholder.com" alt="Улица">
+                <div class="photo-desc">Центр, дождливый вечер. Снято на выдержке.</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://placeholder.com" alt="Прохожий">
+                <div class="photo-desc">Случайный силуэт в метро. Ноябрь.</div>
+            </div>
+            <div class="photo-card">
+                <img src="https://placeholder.com" alt="Неон">
+                <div class="photo-desc">Вспышка в лоб. Ночные витрины.</div>
+            </div>
+        </div>
+
+        <!-- Контакты -->
+        <div class="contacts">
+            <h3>Связаться со мной // Гостевая книга:</h3>
+            <p>E-mail: <a href="mailto:your-email@mail.com">street_photo2000@internet.ru</a></p>
+            <p>Telegram: <a href="https://gradient.org" target="_blank">@street_clicker</a></p>
+            <p>ICQ: 999-666-333 (RIP)</p>
+        </div>
+
+        <!-- Ретро-счетчик -->
+        <div class="counter">
+            0001337
+        </div>
+        <p style="font-size: 10px; color: #555;">Вы являетесь посетителем этой страницы.</p>
+
+    </div>
+
+</body>
+</html>
