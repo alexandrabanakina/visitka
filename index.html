@@ -188,28 +188,38 @@ html
 </head>
 <body>
 
-    <!-- НОВАЯ СЛУЧАЙНАЯ БЕГУЩАЯ СТРОКА -->
-    <div class="pelevin-marquee" id="randomMarquee">
-       ВСЕ ОКЕЙ
+    <!-- Контейнер для бегущей строки (держит её в своей строке) -->
+    <div class="marquee-wrapper">
+        <div class="pelevin-marquee" id="randomMarquee">
+            +++ ВНИМАНИЕ: Окружающая вас реальность является зарегистрированной торговой маркой +++ Окончательный текст не содержит в себе окончательного смысла +++ Сансара обновлена до актуальной версии +++ Освобождение субъекта платное, подробности в гостевой книге +++
+        </div>
     </div>
 
     <style>
-        /* Стиль для летающей строки */
-        .pelevin-marquee {
-            position: fixed; /* Летает поверх всего сайта */
+        /* Ограничитель строки сверху сайта */
+        .marquee-wrapper {
+            width: 100%;
+            overflow: hidden; /* Прячет текст, который выходит за границы экрана */
             background: var(--neon-pink);
+            border-bottom: 2px solid var(--neon-cyan);
+            box-shadow: 0 2px 10px rgba(255, 0, 127, 0.5);
+            position: relative;
+            height: 35px; /* Фиксированная высота строки */
+            display: flex;
+            align-items: center;
+        }
+
+        /* Стиль самого текста */
+        .pelevin-marquee {
+            position: absolute;
             color: #000;
             font-weight: bold;
-            padding: 8px 15px;
             font-size: 14px;
-            border: 2px solid var(--neon-cyan);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.7);
             white-space: nowrap;
-            z-index: 9999; /* Всегда на самом верхнем слое */
-            pointer-events: none; /* Чтобы она не мешала кликать по кнопкам сайта */
-            transition: left 2s linear, top 2s linear; /* Плавное движение каждые 2 секунды */
-            left: 10%;
-            top: 10%;
+            letter-spacing: 1px;
+            left: 0px;
+            /* Плавный переход для создания эффекта естественного движения */
+            transition: left 2.5s ease-in-out; 
         }
     </style>
 
@@ -217,25 +227,36 @@ html
         const marquee = document.getElementById('randomMarquee');
 
         function moveMarqueeRandomly() {
-            // Вычисляем размеры экрана браузера
-            const screenWidth = window.innerWidth - marquee.offsetWidth;
-            const screenHeight = window.innerHeight - marquee.offsetHeight;
+            const wrapperWidth = marquee.parentElement.offsetWidth;
+            const textWidth = marquee.offsetWidth;
 
-            // Генерируем случайную точку на экране
-            const randomX = Math.floor(Math.random() * Math.max(0, screenWidth));
-            const randomY = Math.floor(Math.random() * Math.max(0, screenHeight));
+            // Вычисляем крайние точки, чтобы текст не улетал в пустоту целиком
+            // Строка будет хаотично двигаться взад-вперед в пределах своих границ
+            const minX = wrapperWidth - textWidth; 
+            const maxX = 0;
 
-            // Отправляем строку в эту точку
+            // Если текст короче экрана, двигаем его просто в пределах экрана
+            const targetMin = minX < 0 ? minX : 0;
+            const targetMax = minX < 0 ? 50 : wrapperWidth - textWidth;
+
+            // Генерируем случайную горизонтальную координату
+            const randomX = Math.floor(Math.random() * (targetMax - targetMin) + targetMin);
+
+            // Задаем случайное время анимации (от 1.5 до 3.5 секунд) для эффекта разной скорости
+            const randomTime = (Math.random() * 2 + 1.5).toFixed(1);
+            marquee.style.transition = `left ${randomTime}s ease-in-out`;
+
+            // Двигаем строку
             marquee.style.left = randomX + 'px';
-            marquee.style.top = randomY + 'px';
         }
 
-        // Строка меняет направление и летит в новую случайную точку каждые 2 секунды
-        setInterval(moveMarqueeRandomly, 2000);
+        // Каждые 2.5 секунды выбираем новое случайное положение в строке
+        setInterval(moveMarqueeRandomly, 2500);
         
-        // Запуск сразу при загрузке страницы
+        // Запуск при старте страницы
         window.onload = function() {
-            moveMarqueeRandomly();
+            // Небольшая задержка, чтобы браузер успел посчитать ширину длинного текста
+            setTimeout(moveMarqueeRandomly, 100);
         };
     </script>
     <div class="container">
