@@ -26,7 +26,13 @@ html
             background-attachment: fixed;
             background-size: cover;
         }
-
+ /* Полноэкранное фиксированное фоновое изображение */
+            background-image: linear-gradient(rgba(11, 2, 20, 0.85), rgba(11, 2, 20, 0.85)), 
+                              url('https://unsplash.com');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         /* Навигация как переключатель реальностей */
         nav {
             background: rgba(0, 0, 0, 0.85);
@@ -194,7 +200,10 @@ html
 </head>
 <body>
 
-    <!-- Меню быстрой навигации по сансаре -->
+    <!-- НОВАЯ ОПЦИЯ: Верхняя бегущая строка -->
+    <marquee class="pelevin-marquee" scrollamount="6">
+        +++ ВНИМАНИЕ: Окружающая вас реальность является зарегистрированной торговой маркой +++ Окончательный текст не содержит в себе окончательного смысла +++ Сансара обновлена до актуальной версии +++ Освобождение субъекта платное, подробности в гостевой книге +++
+    </marquee>    <!-- Меню быстрой навигации по сансаре -->
     <nav>
         <a href="#blog">Дискурс</a>
         <a href="#photo">Иллюзии (Фото)</a>
