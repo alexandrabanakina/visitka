@@ -4,210 +4,279 @@ html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aleksandra Banakina// Официальный Сайт</title>
+    <title>Александра Банакина // В ППОИСКАХ СТРУКТУРЫ</title>
     <style>
-        /* Стиль в духе 2000-х годов Magnum агентства*/
+        /* Психоделический кибер-буддизм: глубокий фиолетовый, ядовитый неон и золото, но при этом минималистично и спокойно */
+        :root {
+            --bg-color: #0b0214;
+            --text-color: #dfc5fe;
+            --neon-pink: #ff007f;
+            --neon-cyan: #00f3ff;
+            --gold: #ffdf00;
+        }
+
         body {
-            background-color: #000000;
-            color: #00ff00; /* Неоново-зеленый текст */
-            font-family: "Courier New", Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Courier New', Courier, monospace;
             margin: 0;
+            padding: 0;
+            background-image: linear-gradient(rgba(11, 2, 20, 0.9), rgba(11, 2, 20, 0.9)), 
+                              url('https://unsplash.com');
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        /* Навигация как переключатель реальностей */
+        nav {
+            background: rgba(0, 0, 0, 0.85);
+            border-bottom: 2px solid var(--neon-cyan);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            padding: 10px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 5px 10px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--neon-pink);
+            border-color: var(--neon-pink);
+            text-shadow: 0 0 8px var(--neon-pink);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
             padding: 20px;
-            background-image: radial-gradient(#113311 1px, transparent 1px);
-            background-size: 20px 20px;
+            box-sizing: border-box;
         }
 
         header {
             text-align: center;
-            border: 3px double #00ff00;
-            padding: 10px;
-            margin-bottom: 20px;
-            background: #111;
+            border: 2px solid var(--gold);
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(255, 223, 0, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        h1 {
-            text-shadow: 2px 2px #ff00ff; /* Розовая тень */
-            margin: 5px 0;
-            font-size: 28px;
-        }
-
-        marquee {
-            background: #ff00ff;
-            color: #000;
-            font-weight: bold;
-            padding: 3px;
-            border-bottom: 2px solid #00ff00;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Блок музыки (ностальгия) */
-        .winamp-box {
-            border: 2px solid #00ffff;
-            background: #222;
-            padding: 10px;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 300px;
-            text-align: center;
-            font-size: 12px;
-            color: #00ffff;
-        }
- /* Двухколоночный макет в стиле 2000-х */
-        .main-layout {
-            display: flex;
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* Левая колонка: Блог */
-        .sidebar-blog {
-            flex: 1;
-            min-width: 280px;
-            border: 2px solid #ff00ff;
-            background: #111;
-            padding: 15px;
-            box-sizing: border-box;
-        }
-
-        .blog-post {
-            border-bottom: 1px dotted #ff00ff;
-            padding-bottom: 15px;
-            margin-bottom: 15px;
-        }
-        .blog-date { color: #ff00ff; font-size: 12px; }
-        .blog-title { font-weight: bold; margin: 5px 0; color: #fff; }
-
-        /* Правая колонка: Галерея и Комментарии */
-        .content-area {
-            flex: 2;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Галерея */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .photo-card {
-            border: 2px dashed #ff00ff;
-            padding: 10px;
-            background: #111;
-            text-align: center;
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: auto;
-            border: 1px solid #00ff00;
-            filter: contrast(1.2) saturate(1.4); /* Эффект старой цифровой камеры */
-        }
-
-        .photo-desc {
-            margin-top: 8px;
-            font-size: 12px;
-            color: #fff;
-        }
-
-        /* Ссылки и Контакты */
-        .contacts {
-            margin-top: 30px;
-            border: 2px solid #00ff00;
-            padding: 15px;
-            background: #111;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        a {
-            color: #00ffff;
-            text-decoration: underline;
-        }
-        a:hover {
-            color: #ff00ff;
-            background: #00ff00;
-        }
-
-        /* Счетчик посещений */
-        .counter {
-            margin-top: 20px;
-            background: #333;
-            color: #ff0000;
-            font-family: monospace;
-            font-size: 20px;
-            padding: 5px 10px;
-            border: 2px solid #aaa;
+        header h1 {
+            color: var(--gold);
+            font-size: 32px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
             letter-spacing: 3px;
+            text-shadow: 3px 3px 0px var(--neon-pink);
+        }
+
+        section {
+            background: rgba(20, 5, 35, 0.85);
+            border: 1px solid var(--neon-pink);
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.15);
+        }
+
+        section h2 {
+            color: var(--neon-cyan);
+            border-bottom: 1px solid var(--neon-cyan);
+            padding-bottom: 10px;
+            margin-top: 0;
+            text-transform: uppercase;
+        }
+
+        /* Плеер (Генеративный синтезатор на Web Audio API) */
+        .player-panel {
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--neon-pink);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border-radius: 4px;
+        }
+
+        .player-btn {
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+        }
+
+        .player-btn:hover {
+            background: var(--neon-cyan);
+            color: #000;
+        }
+
+        .player-status {
+            font-size: 13px;
+            color: var(--gold);
+            animation: blink 2s infinite;
+        }
+
+        /* Блог */
+        .post {
+            border-left: 3px solid var(--gold);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+        .post-date { color: var(--neon-pink); font-size: 12px; }
+        .post-title { font-size: 18px; margin: 5px 0; color: #fff; }
+
+        /* Медиа галереи */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .media-card {
+            border: 1px solid var(--text-color);
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+        }
+
+        .media-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            filter: sepia(0.3) hue-rotate(290deg) contrast(1.2);
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed var(--neon-cyan);
+            color: var(--neon-cyan);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .video-placeholder::before {
+            content: '▶ СМОТРЕТЬ СИМУЛЯЦИЮ';
+            font-weight: bold;
+        }
+
+        /* Контакты */
+        .contacts-list a {
+            color: var(--neon-cyan);
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Бегущая строка -->
-    <marquee scrollamount="5">+++ ДОБРО ПОЖАЛОВАТЬ НА МОЮ ДОМАШНЮЮ СТРАНИЦУ +++ У МЕНЯ ВСЕ ХОРОШО +++ ОБНОВЛЕНО СЕГОДНЯ +++</marquee>
+    <!-- Меню быстрой навигации по сансаре -->
+    <nav>
+        <a href="#blog">Дискурс</a>
+        <a href="#photo">Иллюзии (Фото)</a>
+        <a href="#video">Проекции (Видео)</a>
+        <a href="#guestbook">Гостевая Пустота</a>
+        <a href="#contacts">Связь</a>
+    </nav>
 
     <div class="container">
-        
+
+        <!-- Шапка -->
         <header>
-            <h1>Александра Банакина</h1>
-            <p>В поисках структуры</p>
+            <h1>ВСЕ ХОРОШО</h1>
+            <p>Экспериментальная площадка по генерации смыслов и растворению субъекта в медиапространстве.</p>
         </header>
 
-        <!-- Плеер-заглушка -->
-        <div class="winamp-box">
-            <div> Now Playing: <b>Street_Vibe_2000.mp3</b></div>
-            <div style="margin-top:5px;">[  ▶ PLAY  ] [  ▉ STOP  ] █ █ █ ░ ░ ░ ░ </div>
+        <!-- Генеративный Аудио-Плеер (Работает везде без внешних файлов) -->
+        <div class="player-panel">
+            <button class="player-btn" id="audioBtn" onclick="togglePsyAmbient()">▶ ВКЛЮЧИТЬ СУБЪЕКТИВНЫЙ ЭМБИЕНТ</button>
+            <div class="player-status" id="playerStatus">Звук: Реальность отключена</div>
         </div>
 
-        <div>
-            <h2>Мои Снимки:</h2>
-        </div>
-
-        <!-- Галерея (Замените фото на свои) -->
-        <div class="gallery">
-            <div class="photo-card">
-                <!-- Вместо placeholder.com вставьте ссылки на свои фото на GitHub -->
-                <img src="https://placeholder.com" alt="Улица">
-                <div class="photo-desc">Центр, дождливый вечер. Снято на выдержке.</div>
+        <!-- РАЗДЕЛ: БЛОГ -->
+        <section id="blog">
+            <h2>БЛОГ // Свежий Дискурс</h2>
+            
+            <div class="post">
+                <div class="post-date">28.05.2026 // 19:23</div>
+                <div class="post-title">Оцифровка нирваны и рекламные бюджеты</div>
+                <p>Современный брендинг — это попытка продать человеку пустоту, предварительно упаковав её в красивую обертку из его собственных страхов. Когда вы кликаете по ссылке, вы не переходите на сайт. Вы просто позволяете алгоритму немного подрезать края вашего «Я».</p>
             </div>
-            <div class="photo-card">
-                <img src="https://placeholder.com" alt="Прохожий">
-                <div class="photo-desc">Случайный силуэт в метро. Ноябрь.</div>
+
+            <div class="post">
+                <div class="post-date">14.04.2026 // 03:11</div>
+                <div class="post-title">Сон мандарина в виртуальном шлеме</div>
+                <p>Если искусственный интеллект начнет медитировать, достигнет ли он просветления раньше, чем у него закончатся вычислительные мощности на серверах Амазона? И кто в этот момент будет страдать от сансары — процессор или программист?</p>
             </div>
-            <div class="photo-card">
-                <img src="https://placeholder.com" alt="Неон">
-                <div class="photo-desc">Вспышка в лоб. Ночные витрины.</div>
+        </section>
+
+        <!-- РАЗДЕЛ: ФОТОГАЛЕРЕЯ -->
+        <section id="photo">
+            <h2>ФОТОГАЛЕРЕЯ // Слепки Атмосферы</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <img src="https://unsplash.com" alt="Вавилон">
+                    <p style="font-size: 13px; color: var(--gold);">Вавилонские огни. Цифровой морок ночного проспекта.</p>
+                </div>
+                <div class="media-card">
+                    <img src="https://unsplash.com" alt="Будда">
+                    <p style="font-size: 13px; color: var(--gold);">Медитация в промзоне. Окраина реальности.</p>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Контакты -->
-        <div class="contacts">
-            <h3>Связаться со мной // Гостевая книга:</h3>
-            <p>E-mail: <a href="mailto:your-email@mail.com">alexandra.banakina@yandex.ru</a></p>
-            <p>Telegram: <a href="https://gradient.org" target="_blank">@kakyaoru</a></p>
-            <p>ICQ: 999-666-333 (RIP)</p>
-        </div>
+        <!-- РАЗДЕЛ: ВИДЕОГАЛЕРЕЯ -->
+        <section id="video">
+            <h2>ВИДЕОГАЛЕРЕЯ // Движущиеся Проекции</h2>
+            <div class="media-grid">
+                <!-- Карта видео 1 (Для YouTube замените блок на iframe) -->
+                <div class="media-card">
+                    <div class="video-placeholder" onclick="alert('Для запуска реального видео вставьте сюда тег iframe от YouTube')"></div>
+                    <p style="font-size: 13px; margin-top:10px;">Проекция #01: Лекция о метафорах коммерческого шаманизма.</p>
+                </div>
+                <!-- Пример интеграции реального YouTube-плеера в стиле (закомментирован, раскомментируйте при необходимости) -->
+                <!-- 
+                <div class="media-card">
+                    <iframe width="100%" height="200" src="https://youtube.com" frameborder="0" allowfullscreen></iframe>
+                </div> 
+                -->
+            </div>
+        </section>
 
-        <!-- Ретро-счетчик -->
-        <div class="counter">
-            0001337
-        </div>
-        <p style="font-size: 10px; color: #555;">Вы являетесь посетителем этой страницы.</p>
+        <!-- РАЗДЕЛ: КОНТАКТЫ -->
+        <section id="contacts">
+            <h2>КОНТАКТЫ // Точки Выхода</h2>
+            <div class="contacts-list">
+                <p>Шифр связи в Матрице: <a href="mailto:void@pelevin-style.io">void@pelevin-style.io</a></p>
+                <p>Телеграм-канал внутреннего предиктора: <a href="#" target="_blank">@inner_empty_space</a></p>
+                <p>Координаты: Психоневрологический диспансер №17, палата Котовского.</p>
+            </div>
+        </section>
 
-    </div>
-
-</body>
-</html>
+        <!-- РАЗДЕЛ: ГОСТЕВАЯ КНИГА (Через Utterances на базе GitHub) -->
+        <section id="guestbook">
+            <h2>ГОСТЕВАЯ КНИГА // Оставь свой след на воде</h2>
