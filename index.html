@@ -33,78 +33,10 @@ html
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-        /* Навигация как переключатель реальностей */
-        nav {
-            background: rgba(0, 0, 0, 0.85);
-            border-bottom: 2px solid var(--neon-cyan);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            padding: 10px;
-            flex-wrap: wrap;
+     
         }
 
-        nav a {
-            color: var(--neon-cyan);
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 5px 10px;
-            border: 1px solid transparent;
-            transition: all 0.3s;
-        }
 
-        nav a:hover {
-            color: var(--neon-pink);
-            border-color: var(--neon-pink);
-            text-shadow: 0 0 8px var(--neon-pink);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        header {
-            text-align: center;
-            border: 2px solid var(--gold);
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.7);
-            margin-bottom: 40px;
-            box-shadow: 0 0 20px rgba(255, 223, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header h1 {
-            color: var(--gold);
-            font-size: 32px;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 3px 3px 0px var(--neon-pink);
-        }
-
-        section {
-            background: rgba(20, 5, 35, 0.85);
-            border: 1px solid var(--neon-pink);
-            padding: 25px;
-            margin-bottom: 40px;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.15);
-        }
-
-        section h2 {
-            color: var(--neon-cyan);
-            border-bottom: 1px solid var(--neon-cyan);
-            padding-bottom: 10px;
-            margin-top: 0;
-            text-transform: uppercase;
-        }
 
         /* Плеер (Генеративный синтезатор на Web Audio API) */
         .player-panel {
@@ -203,15 +135,7 @@ html
     <!-- НОВАЯ ОПЦИЯ: Верхняя бегущая строка -->
     <marquee class="pelevin-marquee" scrollamount="6">
         +++ ВНИМАНИЕ: Окружающая вас реальность является зарегистрированной торговой маркой +++ Окончательный текст не содержит в себе окончательного смысла +++ Сансара обновлена до актуальной версии +++ Освобождение субъекта платное, подробности в гостевой книге +++
-    </marquee>    <!-- Меню быстрой навигации по сансаре -->
-    <nav>
-        <a href="#blog">Дискурс</a>
-        <a href="#photo">Иллюзии (Фото)</a>
-        <a href="#video">Проекции (Видео)</a>
-        <a href="#guestbook">Гостевая Пустота</a>
-        <a href="#contacts">Связь</a>
-    </nav>
-
+  
     <div class="container">
 
         <!-- Шапка -->
