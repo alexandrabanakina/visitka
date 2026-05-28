@@ -188,11 +188,56 @@ html
 </head>
 <body>
 
-    <!-- НОВАЯ ОПЦИЯ: Верхняя бегущая строка -->
-    <marquee class="pelevin-marquee" scrollamount="0">
-        ВСЕ ОКЕЙ
-        </marquee>
-  
+    <!-- НОВАЯ СЛУЧАЙНАЯ БЕГУЩАЯ СТРОКА -->
+    <div class="pelevin-marquee" id="randomMarquee">
+       ВСЕ ОКЕЙ
+    </div>
+
+    <style>
+        /* Стиль для летающей строки */
+        .pelevin-marquee {
+            position: fixed; /* Летает поверх всего сайта */
+            background: var(--neon-pink);
+            color: #000;
+            font-weight: bold;
+            padding: 8px 15px;
+            font-size: 14px;
+            border: 2px solid var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.7);
+            white-space: nowrap;
+            z-index: 9999; /* Всегда на самом верхнем слое */
+            pointer-events: none; /* Чтобы она не мешала кликать по кнопкам сайта */
+            transition: left 2s linear, top 2s linear; /* Плавное движение каждые 2 секунды */
+            left: 10%;
+            top: 10%;
+        }
+    </style>
+
+    <script>
+        const marquee = document.getElementById('randomMarquee');
+
+        function moveMarqueeRandomly() {
+            // Вычисляем размеры экрана браузера
+            const screenWidth = window.innerWidth - marquee.offsetWidth;
+            const screenHeight = window.innerHeight - marquee.offsetHeight;
+
+            // Генерируем случайную точку на экране
+            const randomX = Math.floor(Math.random() * Math.max(0, screenWidth));
+            const randomY = Math.floor(Math.random() * Math.max(0, screenHeight));
+
+            // Отправляем строку в эту точку
+            marquee.style.left = randomX + 'px';
+            marquee.style.top = randomY + 'px';
+        }
+
+        // Строка меняет направление и летит в новую случайную точку каждые 2 секунды
+        setInterval(moveMarqueeRandomly, 2000);
+        
+        // Запуск сразу при загрузке страницы
+        window.onload = function() {
+            moveMarqueeRandomly();
+        };
+    </script>
     <div class="container">
 
         <!-- Шапка -->
