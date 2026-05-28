@@ -7,25 +7,243 @@ html
     <title>Александра Банакина // В ППОИСКАХ СТРУКТУРЫ</title>
     <style>
         /* В поисках структуры и покоя */
-        :root {
-            --bg-color: #0b0214;
-            --text-color: #dfc5fe;
-            --neon-pink: #ff007f;
-            --neon-cyan: #00f3ff;
-            --gold: #ffdf00;
-        }
+      :root {
+    --bg-color: #121214;       /* Глубокий успокаивающий графит */
+    --surface-color: #1a1a1e;  /* Благородный темный для блоков */
+    --text-main: #e2e2e5;      /* Мягкий белый (не режет глаза) */
+    --text-muted: #8a8a93;     /* Приглушенный серый для дат */
+    --accent-gold: #c5a880;    /* Матовое дзен-золото для акцентов */
+    --border-color: #2a2a30;   /* Тонкие, едва заметные границы */
+}
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 0;
-            background-image: linear-gradient(rgba(11, 2, 20, 0.9), rgba(11, 2, 20, 0.9)), 
-                              url('IMG_1724.PNG');
-            background-attachment: fixed;
-            background-size: cover;
-        }
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* Бесконечная медитативная строка */
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background: #09090b;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.pelevin-marquee {
+    position: absolute;
+    color: var(--accent-gold);
+    font-size: 13px;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    /* Возвращаем абсолютно плавное бесконечное движение */
+    animation: smoothMarquee 25s linear infinite;
+    padding-left: 100%;
+}
+
+@keyframes smoothMarquee {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* Строгая структурированная навигация */
+nav {
+    background: rgba(18, 18, 20, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 15px;
+    backdrop-filter: blur(8px);
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-gold);
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+/* Шапка — чистая геометрия */
+header {
+    text-align: center;
+    padding: 40px 0;
+    margin-bottom: 50px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+header h1 {
+    color: var(--text-main);
+    font-size: 26px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0 0 15px 0;
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 14px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* Кнопка спокойного звука */
+.player-panel {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.player-btn {
+    background: transparent;
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.player-btn:hover {
+    background: var(--accent-gold);
+    color: var(--bg-color);
+}
+
+.player-status {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Блоки контента — упорядоченные и чистые */
+section {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    padding: 35px;
+    margin-bottom: 40px;
+}
+
+section h2 {
+    color: var(--accent-gold);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Блог */
+.post {
+    border-left: 2px solid var(--accent-gold);
+    padding-left: 20px;
+    margin-bottom: 35px;
+}
+.post:last-child { margin-bottom: 0; }
+.post-date { color: var(--text-muted); font-size: 11px; font-weight: 600; }
+.post-title { font-size: 18px; font-weight: 500; margin: 8px 0; color: var(--text-main); }
+.post p { margin: 0; color: var(--text-muted); font-size: 14px; }
+
+/* Сетка галереи */
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.media-card {
+    background: #121214;
+    border: 1px solid var(--border-color);
+    padding: 0;
+    overflow: hidden;
+}
+
+.media-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    /* Убираем ядовитые фильтры, добавляем благородный покой */
+    filter: grayscale(0.2);
+    transition: filter 0.3s;
+}
+.media-card img:hover {
+    filter: grayscale(0);
+}
+
+.media-card p {
+    padding: 15px;
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 220px;
+    background: #09090b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* Контакты */
+.contacts-list p {
+    margin: 10px 0;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+.contacts-list a {
+    color: var(--accent-gold);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--accent-gold);
+}
+.contacts-list a:hover {
+    color: var(--text-main);
+    border-bottom-style: solid;
+}
+
+
+
  /* Полноэкранное фиксированное фоновое изображение */
             background-image: linear-gradient(rgba(11, 2, 20, 0.85), rgba(11, 2, 20, 0.85)), 
                               url('IMG_1724.PNG');
@@ -36,155 +254,7 @@ html
      
         }
 
-   nav a {
-            color: var(--neon-cyan);
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            padding: 5px 10px;
-            border: 1px solid transparent;
-            transition: all 0.3s;
-        }
 
-        nav a:hover {
-            color: var(--neon-pink);
-            border-color: var(--neon-pink);
-            text-shadow: 0 0 8px var(--neon-pink);
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 20px;
-            box-sizing: border-box;
-        }
-
-        header {
-            text-align: center;
-            border: 2px solid var(--gold);
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            margin-bottom: 40px;
-            box-shadow: 0 0 20px rgba(255, 223, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        header h1 {
-            color: var(--gold);
-            font-size: 32px;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 3px 3px 0px var(--neon-pink);
-        }
-
-        section {
-            background: rgba(20, 5, 35, 0.9);
-            border: 1px solid var(--neon-pink);
-            padding: 25px;
-            margin-bottom: 40px;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.15);
-        }
-
-        section h2 {
-            color: var(--neon-cyan);
-            border-bottom: 1px solid var(--neon-cyan);
-            padding-bottom: 10px;
-            margin-top: 0;
-            text-transform: uppercase;
-        }
-        /* Плеер (Генеративный синтезатор на Web Audio API) */
-        .player-panel {
-            background: rgba(0, 0, 0, 0.9);
-            border: 2px solid var(--neon-pink);
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 30px;
-            border-radius: 4px;
-        }
-
-        .player-btn {
-            background: transparent;
-            color: var(--neon-cyan);
-            border: 1px solid var(--neon-cyan);
-            padding: 8px 15px;
-            cursor: pointer;
-            font-family: inherit;
-            font-weight: bold;
-        }
-
-        .player-btn:hover {
-            background: var(--neon-cyan);
-            color: #000;
-        }
-
-        .player-status {
-            font-size: 13px;
-            color: var(--gold);
-            animation: blink 2s infinite;
-        }
-
-        /* Блог */
-        .post {
-            border-left: 3px solid var(--gold);
-            padding-left: 15px;
-            margin-bottom: 25px;
-        }
-        .post-date { color: var(--neon-pink); font-size: 12px; }
-        .post-title { font-size: 18px; margin: 5px 0; color: #fff; }
-
-        /* Медиа галереи */
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .media-card {
-            border: 1px solid var(--text-color);
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            text-align: center;
-        }
-
-        .media-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            filter: sepia(0.3) hue-rotate(290deg) contrast(1.2);
-        }
-
-        .video-placeholder {
-            width: 100%;
-            height: 200px;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px dashed var(--neon-cyan);
-            color: var(--neon-cyan);
-            cursor: pointer;
-            position: relative;
-        }
-
-        .video-placeholder::before {
-            content: '▶ СМОТРЕТЬ СИМУЛЯЦИЮ';
-            font-weight: bold;
-        }
-
-        /* Контакты */
-        .contacts-list a {
-            color: var(--neon-cyan);
-        }
-
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-    </style>
 </head>
 <body>
 
