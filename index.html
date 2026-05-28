@@ -59,6 +59,39 @@ html
             font-size: 12px;
             color: #00ffff;
         }
+ /* Двухколоночный макет в стиле 2000-х */
+        .main-layout {
+            display: flex;
+            gap: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Левая колонка: Блог */
+        .sidebar-blog {
+            flex: 1;
+            min-width: 280px;
+            border: 2px solid #ff00ff;
+            background: #111;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .blog-post {
+            border-bottom: 1px dotted #ff00ff;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
+        }
+        .blog-date { color: #ff00ff; font-size: 12px; }
+        .blog-title { font-weight: bold; margin: 5px 0; color: #fff; }
+
+        /* Правая колонка: Галерея и Комментарии */
+        .content-area {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
         /* Галерея */
         .gallery {
