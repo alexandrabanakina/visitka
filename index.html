@@ -339,11 +339,30 @@ section h2 {
                 <div class="post-title">Оцифровка нирваны и рекламные бюджеты</div>
                 <p>Современный брендинг — это попытка продать человеку пустоту, предварительно упаковав её в красивую обертку из его собственных страхов. Когда вы кликаете по ссылке, вы не переходите на сайт. Вы просто позволяете алгоритму немного подрезать края вашего «Я».</p>        </header>
 
-        <!-- Генеративный Аудио-Плеер (Работает везде без внешних файлов) -->
-        <div class="player-panel">
-            <button class="player-btn" id="audioBtn" onclick="togglePsyAmbient()">▶ ВКЛЮЧИТЬ СУБЪЕКТИВНЫЙ ЭМБИЕНТ</button>
-            <div class="player-status" id="playerStatus">Звук: Реальность отключена</div>
-        </div>
+     <script>
+    function toggleMusic() {
+        const audio = document.getElementById('bgAudio');
+        const btn = document.getElementById('audioBtn');
+        const status = document.getElementById('playerStatus');
+
+        if (audio.paused) {
+            // Если музыка стоит на паузе — запускаем трек
+            audio.play().then(() => {
+                btn.innerText = "▉ Пауза";
+                status.innerText = "Звук: Воспроизведение трека...";
+            }).catch(error => {
+                // Защита браузера: музыка не запустится без первого клика пользователя по экрану
+                console.log("Ошибка воспроизведения. Пожалуйста, кликните по сайту.", error);
+                status.innerText = "Ошибка: нажмите еще раз";
+            });
+        } else {
+            // Если музыка играет — ставим на паузу
+            audio.pause();
+            btn.innerText = "▶ Включить музыку";
+            status.innerText = "Звук: Пауза";
+        }
+    }
+</script>
 
         <!-- РАЗДЕЛ: БЛОГ -->
         <section id="blog">
