@@ -155,7 +155,13 @@ section {
     padding: 35px;
     margin-bottom: 40px;
 }
+<!-- Музыкальный плеер (Вместо ambient.mp3 укажите имя вашего файла) -->
+<audio id="bgAudio" src="ambient.mp3" loop></audio>
 
+<div class="player-panel">
+    <button class="player-btn" id="audioBtn" onclick="toggleMusic()">▶ Включить музыку</button>
+    <div class="player-status" id="playerStatus">Звук: Тишина</div>
+</div>
 section h2 {
     color: var(--accent-gold);
     font-size: 16px;
