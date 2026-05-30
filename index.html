@@ -255,26 +255,8 @@ header p {
     </div>
 </div>
 
-.player-arrow {
-    color: var(--accent-gold);
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 1;
-    /* Запуск анимации: длится 1.5 секунды, бесконечная, плавная */
-    animation: bounceArrow 1.5s ease-in-out infinite; 
-}
 
-/* Карта движения: смещение по вертикали */
-@keyframes bounceArrow {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(6px); /* Опускается на 6 пикселей вниз */
-    }
-}
 
-</div>
 
 
     <!-- Контейнер для бегущей строки (держит её в своей строке) -->
@@ -319,6 +301,25 @@ header p {
     83%  { color: #4b0082; } /* Индиго / Фиолетовый */
     100% { color: #ff0000; } /* Возврат к красному для плавности */
 }
+        .player-arrow {
+    color: var(--accent-gold);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    /* Запуск анимации: длится 1.5 секунды, бесконечная, плавная */
+    animation: bounceArrow 1.5s ease-in-out infinite; 
+}
+
+/* Карта движения: смещение по вертикали */
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px); /* Опускается на 6 пикселей вниз */
+    }
+}
+
     </style>
 
     <script>
