@@ -243,6 +243,37 @@ header p {
         <div id="trackName" style="font-size: 13px; color: var(--accent-gold); margin-bottom: 5px;"></div>
         <div class="player-status" id="playerStatus">Звук: Тишина</div>
     </div>
+    <div class="player-panel" style="position: relative; flex-direction: column; align-items: center; gap: 10px;">
+    
+    <!-- Сама анимированная стрелочка -->
+    <div class="player-arrow">↓</div>
+
+    <button class="player-btn" id="audioBtn" onclick="toggleMusic()">▶ Включить музыку</button>
+    <div>
+        <div id="trackName" style="font-size: 13px; color: var(--accent-gold); margin-bottom: 5px;"></div>
+        <div class="player-status" id="playerStatus">Звук: Тишина</div>
+    </div>
+</div>
+
+.player-arrow {
+    color: var(--accent-gold);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1;
+    /* Запуск анимации: длится 1.5 секунды, бесконечная, плавная */
+    animation: bounceArrow 1.5s ease-in-out infinite; 
+}
+
+/* Карта движения: смещение по вертикали */
+@keyframes bounceArrow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(6px); /* Опускается на 6 пикселей вниз */
+    }
+}
+
 </div>
 
 
