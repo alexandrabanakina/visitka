@@ -233,6 +233,69 @@ header p {
  </style>
 </head>
 <body>
+    <section id="guestbook">
+    <h2>ГОСТЕВАЯ КНИГА // Проекции из Google Таблиц</h2>
+    <p style="font-size: 12px; margin-bottom: 20px; color: var(--text-muted);">Все реплики материализуются в единой цифровой матрице.</p>
+    
+    <!-- Контейнер, куда скрипт загрузит комментарии из таблицы -->
+    <div id="sheets-comments" style="display: flex; flex-direction: column; gap: 15px;">
+        <p style="color: var(--text-muted); font-size: 13px;">Загрузка хроник сансары...</p>
+    </div>
+</section>
+
+<!-- СКРИПТ ЧТЕНИЯ ДАННЫХ ИЗ GOOGLE ТАБЛИЦЫ -->
+<script>
+    // Вставьте сюда ссылку на вашу опубликованную Google Таблицу (в формате CSV или обычную)
+    const SHEET_URL = 'ССЫЛКА_НА_ВАШУ_ОПУБЛИКОВАННУЮ_ТАБЛИЦУ';
+
+    async function loadComments() {
+        try {
+            const response = await fetch(SHEET_URL);
+            const data = await response.text();
+            
+            // Простейший парсинг строк (если таблица опубликована как CSV)
+            const rows = data.split('\n').slice(1); // Пропускаем шапку таблицы
+            const container = document.getElementById('sheets-comments');
+            container.innerHTML = ''; // Очищаем текст загрузки
+
+            if (rows.length === 0 || rows[0].trim() === '') {
+                container.innerHTML = '<p style="color: var(--text-muted); font-size: 13px;">Пустота. Будда еще не оставил здесь записей.</p>';
+                return;
+            }
+
+            rows.forEach(row => {
+                // Разбиваем строку на столбцы (дата, ник, заголовок, текст)
+                const columns = row.split(','); 
+                if (columns.length >= 4) {
+                    const date = columns[0].replace(/"/g, '');
+                    const name = columns[1].replace(/"/g, '');
+                    const postTitle = columns[2].replace(/"/g, '');
+                    const message = columns[3].replace(/"/g, '');
+
+                    // Создаем карточку комментария в дзен-стиле сайта
+                    const commentBox = document.createElement('div');
+                    commentBox.style.border = '1px solid var(--border-color)';
+                    commentBox.style.padding = '15px';
+                    commentBox.style.background = 'var(--surface-color)';
+                    commentBox.innerHTML = `
+                        <div style="display:flex; justify-content:space-between; font-size:11px; color:var(--text-muted); margin-bottom:5px;">
+                            <span><b>${name}</b> в теме <i>"${postTitle}"</i></span>
+                            <span>${date}</span>
+                        </div>
+                        <p style="margin:0; font-size:14px; color:var(--text-main);">${message}</p>
+                    `;
+                    container.appendChild(commentBox);
+                }
+            });
+        } catch (error) {
+            console.error('Ошибка загрузки данных:', error);
+            document.getElementById('sheets-comments').innerHTML = '<p style="color:red;">Матрица заблокировала поток данных. Проверьте публикацию таблицы.</p>';
+        }
+    }
+
+    // Запускаем чтение таблицы при загрузке страницы
+    window.addEventListener('DOMContentLoaded', loadComments);
+</script>
 <!-- Музыкальный плеер (Вместо ambient.mp3 укажите имя вашего файла) -->
 <audio id="bgAudio" src="05 Я родился в плохую погоду.mp3" loop></audio>
 <div class="player-panel">
