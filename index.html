@@ -6,7 +6,7 @@ html
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Александра Банакина // В ППОИСКАХ СТРУКТУРЫ</title>
     <style>
-        /* В поисках структуры и покоя */
+        /* В поисках структуры и покоя * в стиле 2000х/
       :root {
     --bg-color: #d4af37;       /* Глубокий успокаивающий графит */
     --surface-color: #1a1a1e;  /* Благородный темный для блоков */
@@ -148,31 +148,8 @@ header p {
     color: var(--text-muted);
 }
 
-/* Блоки контента — упорядоченные и чистые */
-section {
-    background: var(--surface-color);
-    border: 1px solid var(--border-color);
-    padding: 35px;
-    margin-bottom: 40px;
-}
-<!-- Музыкальный плеер (Вместо ambient.mp3 укажите имя вашего файла) -->
-<audio id="bgAudio" src="ambient.mp3" loop></audio>
 
-<div class="player-panel">
-    <button class="player-btn" id="audioBtn" onclick="toggleMusic()">▶ Включить музыку</button>
-    <div class="player-status" id="playerStatus">Звук: Тишина</div>
-</div>
-section h2 {
-    color: var(--accent-gold);
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 0;
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-color);
-}
+
 
 /* Блог */
 .post {
@@ -253,7 +230,24 @@ section h2 {
  </style>
 </head>
 <body>
+<!-- Музыкальный плеер (Вместо ambient.mp3 укажите имя вашего файла) -->
+<audio id="bgAudio" src="ambient.mp3" loop></audio>
 
+<div class="player-panel">
+    <button class="player-btn" id="audioBtn" onclick="toggleMusic()">▶ Включить музыку</button>
+    <div class="player-status" id="playerStatus">Звук: Тишина</div>
+</div>
+section h2 {
+    color: var(--accent-gold);
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
     <!-- Контейнер для бегущей строки (держит её в своей строке) -->
     <div class="marquee-wrapper">
         <div class="pelevin-marquee" id="randomMarquee">
