@@ -248,12 +248,7 @@ header p {
     <!-- Сама анимированная стрелочка -->
     <div class="player-arrow">↓</div>
 
-    <button class="player-btn" id="audioBtn" onclick="toggleMusic()">▶ Включить музыку</button>
-    <div>
-        <div id="trackName" style="font-size: 13px; color: var(--accent-gold); margin-bottom: 5px;"></div>
-        <div class="player-status" id="playerStatus">Звук: Тишина</div>
-    </div>
-</div>
+  
 
 
 
@@ -313,7 +308,7 @@ header p {
 /* Карта движения: смещение по вертикали */
 @keyframes bounceArrow {
     0%, 100% {
-        transform: translateY(0);
+        transform: translateY(180);
     }
     50% {
         transform: translateY(6px); /* Опускается на 6 пикселей вниз */
