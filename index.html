@@ -4,7 +4,7 @@ html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Александра Банакина // В ППОИСКАХ СТРУКТУРЫ</title>
+    <title>Александра Банакина // сайт блог личный ассистент сансара </title>
     <style>
         /* В поисках структуры и покоя * в стиле 2000х/
       :root {
@@ -99,12 +99,19 @@ header {
 }
 
 header h1 {
-    color: var(--text-main);
     font-size: 30px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 4px;
     margin: 0 0 15px 0;
+
+    /* Эффект переливания */
+    background: linear-gradient(45deg, #c5a880, #ff007f, #00f3ff, #c5a880);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 8s ease infinite;
+}
 }
 
 header p {
