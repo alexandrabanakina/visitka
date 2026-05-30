@@ -105,12 +105,9 @@ header h1 {
     letter-spacing: 4px;
     margin: 0 0 15px 0;
 
-    /* Эффект переливания */
-    background: linear-gradient(45deg, #c5a880, #ff007f, #00f3ff, #c5a880);
-    background-size: 400% 400%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: gradientShift 8s ease infinite;
+/* Прямая анимация чистого цвета текста */
+    animation: rainbowText 12s linear infinite;
+
 }
 }
 
@@ -282,6 +279,15 @@ header p {
             /* Плавный переход для создания эффекта естественного движения */
             transition: left 2.5s ease-in-out; 
         }
+        @keyframes rainbowText {
+    0%   { color: #ff0000; } /* Красный */
+    17%  { color: #ff7f00; } /* Оранжевый */
+    33%  { color: #ffff00; } /* Желтый */
+    50%  { color: #00ff00; } /* Зеленый */
+    67%  { color: #0000ff; } /* Синий */
+    83%  { color: #4b0082; } /* Индиго / Фиолетовый */
+    100% { color: #ff0000; } /* Возврат к красному для плавности */
+}
     </style>
 
     <script>
