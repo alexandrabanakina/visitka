@@ -372,6 +372,58 @@ header p {
     66%, 91%  { transform: translateX(-66.66%); }
     100%      { transform: translateX(0); }
 }
+        .discuss-btn {
+    color: #00ff00; /* Ядовито-зеленый текст по умолчанию */
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    background: #000;
+    
+    /* Неоновая трехслойная рамка */
+    border: 2px solid #ff007f;
+    box-shadow: 0 0 8px #ff007f, inset 0 0 4px #00f3ff;
+    
+    padding: 6px 14px;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    
+    /* Запуск бесконечного психоделического дыхания кнопки */
+    animation: psychPulse 2s infinite ease-in-out;
+    transition: all 0.1s ease;
+}
+
+/* Эффект при наведении: глитч, инверсия цвета и взрыв неона */
+.discuss-btn:hover {
+    color: #000;
+    background: #00ff00;
+    border-color: #00f3ff;
+    box-shadow: 0 0 20px #00ff00, 0 0 40px #ff007f;
+    text-shadow: none;
+    transform: scale(1.05) rotate(-1deg); /* Легкий перекос реальности */
+}
+
+/* Эффект при клике: кнопка проваливается в текстуру */
+.discuss-btn:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 4px #ff007f;
+}
+
+/* Анимация пульсации неона (эффект нестабильной неоновой вывески) */
+@keyframes psychPulse {
+    0%, 100% {
+        box-shadow: 0 0 8px #ff007f, inset 0 0 4px #00f3ff;
+        text-shadow: 0 0 2px #00ff00;
+    }
+    50% {
+        box-shadow: 0 0 16px #00f3ff, inset 0 0 8px #ff007f;
+        text-shadow: 0 0 5px #ff007f;
+        border-color: #00f3ff;
+    }
+}
     </style>
 
     <script>
@@ -423,6 +475,28 @@ header p {
                 <div class="post-date">30.05.2026 // 15:30</div>
                 <div class="post-title">Почему так хочется начинать каждое свое высказывание со слов "Кажется..."?</div>
                 <p></p>        </header>
+          <!-- КНОПКА ВЗАИМОДЕЙСТВИЯ -->
+        <div style="margin-top: 10px;">
+            <a href="#guestbook" class="discuss-btn" onclick="switchDiscussion('Оцифровка нирваны')">💬 Обсудить дискурс</a>
+        </div>
+    </div>
+<script src="https://giscus.app/client.js"
+        data-repo="alexandrabanakina/visitka"
+        data-repo-id="R_kgDOSqfRcQ"
+        data-category="[ВВЕДИТЕ CATEGORY NAME]"
+        data-category-id="[ВВЕДИТЕ CATEGORY ID]"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="ru"
+        crossorigin="anonymous"
+        async>
+</script>
+
+
 
      <script>
    function toggleMusic() {
