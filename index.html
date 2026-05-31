@@ -479,13 +479,13 @@ header p {
           <!-- КНОПКА ВЗАИМОДЕЙСТВИЯ -->
     
         <div style="margin-top: 10px;">
-            <a href="ССЫЛКА_НА_ВАШУ_GOOGLE_ФОРМУ" target="_blank" class="discuss-btn">💬 Войти в дискуссию</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSceoJOB2nyKC13mrBe1rCBTh8xv3s531tqDWqxFwOZB5uAbwQ/viewform?usp=dialog" target="_blank" class="discuss-btn">💬 Войти в дискуссию</a>
         </div>
     </div>
 
     <section id="guestbook">
     <h2>ГОСТЕВАЯ КНИГА // Проекции из Google Таблиц</h2>
-    <p style="font-size: 12px; margin-bottom: 20px; color: var(--text-muted);">Все реплики материализуются в единой цифровой матрице.</p>
+    <p style="font-size: 12px; margin-bottom: 20px; color: var(--text-muted);"></p>
     
     <!-- Контейнер, куда скрипт загрузит комментарии из таблицы -->
     <div id="sheets-comments" style="display: flex; flex-direction: column; gap: 15px;">
@@ -496,7 +496,7 @@ header p {
 <!-- СКРИПТ ЧТЕНИЯ ДАННЫХ ИЗ GOOGLE ТАБЛИЦЫ -->
 <script>
     // Вставьте сюда ссылку на вашу опубликованную Google Таблицу (в формате CSV или обычную)
-    const SHEET_URL = 'ССЫЛКА_НА_ВАШУ_ОПУБЛИКОВАННУЮ_ТАБЛИЦУ';
+    const SHEET_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSceoJOB2nyKC13mrBe1rCBTh8xv3s531tqDWqxFwOZB5uAbwQ/viewform?usp=dialog';
 
     async function loadComments() {
         try {
