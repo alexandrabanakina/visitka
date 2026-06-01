@@ -15,7 +15,7 @@ html
     --accent-gold: #c5a880;    /* Матовое дзен-золото для акцентов */
     --border-color: #2a2a30;   /* Тонкие, едва заметные границы */
 }
-
+<link href="https://googleapis.com" rel="stylesheet">
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
@@ -470,7 +470,10 @@ header p {
 <header style="position: relative;"> <!-- Важно: добавили position: relative -->
     
     <!-- КУРС ДОЛЛАРА СЛЕВА -->
-    <div id="usd-ticker" style="position: absolute; left: -50px; bottom: 400px; color: var(--accent-gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
+    <div id="usd-ticker" style="position: absolute; left: -50px; bottom: 400px; font-family: 'Comic Neue', 'Comic Sans MS', cursive; font-size: 16px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #ff007f; text-shadow: 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 0 0 #000, -2px 0 0 #000;">
+    USD/RUB: <span id="usd-rate" style="color: #00f3ff;">загрузка...</span>
+</div>
+Используйте код с осторожностью.💡 Как устроен этот психоделический мультяшный стиль:Шрифт: Свойство font-family: 'Comic Neue', 'Comic Sans MS'... включает округлые, забавные мультяшные буквы. Если у пользователя медленный интернет и Google Fonts еще не скачался, браузер автоматически включит стандартный и всем знакомый Comic Sans.Цвета: Само слово USD/RUB: теперь горит сочным неоново-розовым цветом (color: #ff007f), а цифры самого курса внутри тега <span> будут подставляться ярко-голубым цветом (color: #00f3ff).Черный контур (Обводка): Параметр text-shadow создает плотные черные тени (#000) со всех восьми сторон вокруг каждой буквы. Это создает идеальный эффект рисованного контура из комиксов, который не сотрется и будет отлично читаться на любом, даже самом пестром фоне.🎨 Как изменить цвета под себя?Если неоново-розовый и голубой кажутся вам слишком агрессивными, вы можете прямо в коде заменить коды цветов на любые другие мультяшные оттенки:Кислотно-зеленый: #00ff00Солнечно-желтый: #ffff00Сочный оранжевый: #ff7f00
         USD/RUB: <span id="usd-rate">загрузка...</span>
     </div>
             <h1>КЛЕТЧАТКА СКАМ</h1>
