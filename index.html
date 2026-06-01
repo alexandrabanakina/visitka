@@ -470,7 +470,7 @@ header p {
 <header style="position: relative;"> <!-- Важно: добавили position: relative -->
     
     <!-- КУРС ДОЛЛАРА СЛЕВА -->
-    <div id="usd-ticker" style="position: absolute; left: 0; bottom: -10px; color: var(--accent-gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
+    <div id="usd-ticker" style="position: absolute; left: -20px; bottom: 40px; color: var(--accent-gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
         USD/RUB: <span id="usd-rate">загрузка...</span>
     </div>
             <h1>КЛЕТЧАТКА СКАМ</h1>
@@ -584,34 +584,38 @@ header p {
 </script>
 
 
-    <script>
+<script>
     async function fetchExchangeRate() {
         const rateElement = document.getElementById('usd-rate');
         try {
-            // Используем бесплатное стабильное API курсов валют
-            const response = await fetch('https://er-api.com');
-            const data = await response.getRaw() || await response.json();
+            // Используем альтернативное стабильное API без ограничений CORS
+            const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+            
+            if (!response.ok) throw new Error('Сеть не отвечает');
+            
+            const data = await response.json();
             
             if (data && data.rates && data.rates.RUB) {
                 const rubRate = data.rates.RUB;
-                // Округляем до двух знаков после запятой и выводим на экран
+                // Записываем курс в элемент
                 rateElement.innerText = `₽${rubRate.toFixed(2)}`;
             } else {
                 rateElement.innerText = "недоступен";
             }
         } catch (error) {
             console.error("Ошибка при получении курса валют:", error);
-            rateElement.innerText = "оффлайн";
+            // Если и это API не ответило, выводим красивую заглушку в стиле Пелевина
+            rateElement.innerText = "₽93.45 (симуляция)";
         }
     }
 
-    // Запускаем обновление курса сразу при загрузке страницы
+    // Запуск при загрузке страницы
     window.addEventListener('DOMContentLoaded', fetchExchangeRate);
     
-    // Автоматически обновляем данные в фоновом режиме каждые 15 минут (900000 мс)
+    // Обновление каждые 15 минут
     setInterval(fetchExchangeRate, 900000);
 </script>
-</body>
+
         <!-- РАЗДЕЛ: ФОТОГАЛЕРЕЯ -->
         <section id="photo">
             <h2>Сансара Стихи</h2>
