@@ -470,7 +470,7 @@ header p {
 <header style="position: relative;"> <!-- Важно: добавили position: relative -->
     
     <!-- КУРС ДОЛЛАРА СЛЕВА -->
-    <div id="usd-ticker" style="position: absolute; left: 0; bottom: -40px; color: var(--accent-gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
+    <div id="usd-ticker" style="position: absolute; left: 0; bottom: -10px; color: var(--accent-gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
         USD/RUB: <span id="usd-rate">загрузка...</span>
     </div>
             <h1>КЛЕТЧАТКА СКАМ</h1>
@@ -583,15 +583,18 @@ header p {
 }
 </script>
 
-       <script>
+
+    <script>
     async function fetchExchangeRate() {
         const rateElement = document.getElementById('usd-rate');
         try {
+            // Используем бесплатное стабильное API курсов валют
             const response = await fetch('https://er-api.com');
-            const data = await response.json();
+            const data = await response.getRaw() || await response.json();
             
             if (data && data.rates && data.rates.RUB) {
                 const rubRate = data.rates.RUB;
+                // Округляем до двух знаков после запятой и выводим на экран
                 rateElement.innerText = `₽${rubRate.toFixed(2)}`;
             } else {
                 rateElement.innerText = "недоступен";
@@ -602,8 +605,11 @@ header p {
         }
     }
 
+    // Запускаем обновление курса сразу при загрузке страницы
     window.addEventListener('DOMContentLoaded', fetchExchangeRate);
-    setInterval(fetchExchangeRate, 900000); // Обновление каждые 15 минут
+    
+    // Автоматически обновляем данные в фоновом режиме каждые 15 минут (900000 мс)
+    setInterval(fetchExchangeRate, 900000);
 </script>
 </body>
         <!-- РАЗДЕЛ: ФОТОГАЛЕРЕЯ -->
