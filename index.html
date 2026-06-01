@@ -467,7 +467,12 @@ header p {
     <div class="container">
 
         <!-- Шапка -->
-        <header>
+<header style="position: relative;"> <!-- Важно: добавили position: relative -->
+    
+    <!-- КУРС ДОЛЛАРА СЛЕВА -->
+    <div id="usd-ticker" style="position: absolute; left: 0; bottom: -40px; color: var(--accent-gold); font-size: 12px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase;">
+        USD/RUB: <span id="usd-rate">загрузка...</span>
+    </div>
             <h1>КЛЕТЧАТКА СКАМ</h1>
             <p></p><br>
               <h2>Свежий Дискурс</h2>
@@ -578,7 +583,29 @@ header p {
 }
 </script>
 
-       
+       <script>
+    async function fetchExchangeRate() {
+        const rateElement = document.getElementById('usd-rate');
+        try {
+            const response = await fetch('https://er-api.com');
+            const data = await response.json();
+            
+            if (data && data.rates && data.rates.RUB) {
+                const rubRate = data.rates.RUB;
+                rateElement.innerText = `₽${rubRate.toFixed(2)}`;
+            } else {
+                rateElement.innerText = "недоступен";
+            }
+        } catch (error) {
+            console.error("Ошибка при получении курса валют:", error);
+            rateElement.innerText = "оффлайн";
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', fetchExchangeRate);
+    setInterval(fetchExchangeRate, 900000); // Обновление каждые 15 минут
+</script>
+</body>
         <!-- РАЗДЕЛ: ФОТОГАЛЕРЕЯ -->
         <section id="photo">
             <h2>Сансара Стихи</h2>
