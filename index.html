@@ -34,7 +34,25 @@ body {
      
         }
 
+/* Анимация портальной вибрации для значка */
+.rick-portal-text {
+    transform: rotate(-2deg); /* Фирменный легкий наклон букв логотипа */
+    animation: portalVibe 3s infinite steps(2); /* Дерганое движение в стиле анимации */
+}
 
+@keyframes portalVibe {
+    0%, 100% {
+        transform: rotate(-2deg) translate(0, 0) scale(1);
+        filter: hue-rotate(0deg);
+    }
+    33% {
+        transform: rotate(-1.5deg) translate(-1px, 1px) scale(1.02);
+    }
+    66% {
+        transform: rotate(-2.5deg) translate(1px, -1px) scale(0.99);
+        filter: hue-rotate(10deg); /* Легкое психоделическое мерцание цвета */
+    }
+}
 
   /* Стиль для верхней бегущей строки */
         .pelevin-marquee {
@@ -470,9 +488,10 @@ header p {
 <header style="position: relative;"> <!-- Важно: добавили position: relative -->
     
     <!-- КУРС ДОЛЛАРА СЛЕВА -->
-    <div id="usd-ticker" style="position: absolute; left: -50px; bottom: 250px; font-family: 'Comic Neue', 'Comic Sans MS', cursive; font-size: 16px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; color: #ff007f; text-shadow: 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 0 0 #000, -2px 0 0 #000;">
-    USD/RUB: <span id="usd-rate" style="color: #00f3ff;">загрузка...</span>
-</div>
+    <div id="usd-ticker" style="position: absolute; left: -50px; bottom: 270px; font-family: 'Permanent Marker', 'Comic Sans MS', cursive; font-size: 19px; letter-spacing: 1px; text-transform: uppercase; color: #a6ee1a; text-shadow: 0 0 10px #a6ee1a, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 2px 0 0 #000, -2px 0 0 #000; z-index: 10;">
+USD/RUB: <span id="usd-rate" style="color: #00e5ff; text-shadow: 0 0 10px #00e5ff, 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000;">загрузка...</span>
+    </div>
+    </div>
 
 
             <h1>КЛЕТЧАТКА СКАМ</h1>
