@@ -506,43 +506,45 @@ window.addEventListener('DOMContentLoaded', () => {
         transform: translateY(6px); /* Опускается на 6 пикселей вниз */
     }
 }
-        /* Настройки слайдера внутри плеера */
+       /* 1. Главный контейнер слайдера */
 .header-slider {
-    width: 100%;
-    max-width: 400px;  /* Ограничиваем максимальную ширину в плеере */
-    height: 150px;      /* Компактная высота для интеграции в панель */
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    background: var(--surface-color);
+    width: 600px;        /* Задайте нужную вам ширину слайдера */
+    height: 400px;       /* Задайте нужную вам высоту слайдера */
+    margin: 0 auto;      /* Строго по центру страницы */
+    overflow: hidden;    /* Прячет остальные 2 картинки, которые не поместились */
     position: relative;
-    margin: 5px 0;      /* Небольшие отступы сверху и снизу */
+    border-radius: 8px;  /* Опционально: скругление углов */
 }
 
+/* 2. Лента с картинками, которая будет двигаться */
 .slider-track {
     display: flex;
-    width: 300%;
+    width: 300%;         /* Ширина 300%, так как у нас ровно 3 слайда (по 100% на каждый) */
     height: 100%;
-    animation: slideAnimation 30s infinite ease-in-out;
+    /* Подключаем анимацию: имя 'slideAnimation', длительность 12 секунд, бесконечно */
+    animation: slideAnimation 12s infinite ease-in-out; 
 }
 
+/* 3. Каждый отдельный слайд */
 .slide {
-    width: 100%;
+    width: 100%;         /* Занимает ровно 1/3 от всей ленты (то есть весь экран слайдера) */
     height: 100%;
-    flex-shrink: 0;
+    flex-shrink: 0;      /* Запрещает картинкам сжиматься */
 }
 
+/* 4. Настройка самих изображений */
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;   /* Картинка заполняет слайд без искажения пропорций */
 }
 
-/* Бесконечная анимация слайдов */
+/* 5. Логика анимации для 3-х слайдов */
 @keyframes slideAnimation {
-    0%, 30%   { transform: translateX(0); }
-    33%, 63%  { transform: translateX(-33.33%); }
-    66%, 99%  { transform: translateX(-66.66%); }
-    100%      { transform: translateX(0); }
+    0%, 25%   { transform: translateX(0); }         /* 1-я картинка стоит */
+    33%, 58%  { transform: translateX(-33.33%); }  /* Переход и показ 2-й картинки */
+    66%, 91%  { transform: translateX(-66.66%); }  /* Переход и показ 3-й картинки */
+    100%      { transform: translateX(0); }         /* Возврат к 1-й картинке */
 }
         .discuss-btn {
     color: #00ff00; /* Ядовито-зеленый текст по умолчанию */
