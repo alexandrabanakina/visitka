@@ -35,7 +35,6 @@ body {
         }
 
 
-
   /* Стиль для верхней бегущей строки */
         .pelevin-marquee {
             background: var(--neon-pink);
@@ -186,6 +185,10 @@ header p {
  </style>
 </head>
 <body>
+    <div class="isolated-discourse-column">
+    <p>Ваш текст первым абзацем в столбик. Он зажат по ширине и переносится строго по строчкам.</p>
+    <p>Второй абзац текста. Положение блока регулируется в пикселях сверху и справа.</p>
+</div>
     <!-- Контейнер с газетной подложкой и текстом печатной машинки -->
 <!-- Изначально он полностью скрыт -->
 <div id="newspaper-container" class="news-hidden">
@@ -193,7 +196,37 @@ header p {
     <span class="typewriter-text">Клетчатка скам и свежий дискурс</span>
   </div>
 </div>
+<style>
+    .isolated-discourse-column {
+    /* Абсолютная изоляция от общего потока сайта */
+    position: absolute !important;
+    z-index: 100; /* Отображается поверх фона, но под всплывающими окнами */
+    
+    /* ТОЧНОЕ ПОЛОЖЕНИЕ НА ЭКРАНЕ (Настройте под себя) */
+    top: 500px !important;   /* Расстояние в пикселях от самого верха страницы */
+    right: 10% !important;   /* Расстояние от правого края экрана */
+    
+    /* Формирование узкого столбика */
+    width: 280px !important; /* Жесткая ширина колонки */
+    box-sizing: border-box !important;
+    
+    /* Газетное выравнивание */
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    
+    /* Безопасные внутренние отступы и шрифты */
+    padding: 0 !important;
+    margin: 0 !important;
+}
 
+ </style>
+    .isolated-discourse-column p {
+    font-family: 'Courier New', Courier, monospace !important; /* Шрифт печатной машинки */
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    color: var(--text-main) !important; /* Использует цвет вашего сайта */
+    margin: 0 0 12px 0 !important; /* Отступы только между абзацами */
+}
 <style>
 /* Базовое скрытое состояние */
 .news-hidden {
