@@ -181,7 +181,135 @@ header p {
     color: var(--text-main);
     border-bottom-style: solid;
 }
+<!-- Контейнер с газетной подложкой и текстом печатной машинки -->
+<div id="newspaper-container" class="news-hidden">
+  <div class="news-paper-bg">
+    <!-- Текст, который будет "печататься" -->
+    <span class="typewriter-text">Клетчатка скам и свежий дискурс</span>
+  </div>
+</div>
 
+<style>
+/* Скрытое состояние */
+.news-hidden {
+  display: none;
+}
+
+/* Активное состояние блока */
+#newspaper-container.news-active {
+  display: block;
+  position: fixed;
+  z-index: 999999; /* Перекрывает все блоки */
+  /* Размеры блока подгоняются под длину текста */
+  width: auto; 
+  height: auto;
+  padding: 15px 25px;
+  box-sizing: border-box;
+  
+  /* Эффект подложки из старой газетной бумаги */
+  background-color: #f2ebd9; /* Цвет пожелтевшей бумаги */
+  background-image: 
+    radial-gradient(rgba(0,0,0,0.05) 1px, transparent 0),
+    linear-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
+  background-size: 4px 4px, 100% 20px;
+  
+  /* Газетные элементы: легкая текстура, тени и рваная черная рамка */
+  border: 2px dashed #2b2b2b;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  
+  /* Эффект кручения и развертывания при появлении за 1.5 секунды */
+  animation: spawnSpinNewspaper 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Контейнер для выравнивания */
+.news-paper-bg {
+  display: flex;
+  align-items: center;
+}
+
+/* Стили и анимация печатной машинки */
+.typewriter-text {
+  font-family: 'Courier New', Courier, monospace; /* Классический шрифт машинки */
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a; /* Цвет старых чернил */
+  white-space: nowrap;
+  overflow: hidden; /* Скрывает недописанную часть текста */
+  border-right: 3px solid #1a1a1a; /* Каретка/курсор печатной машинки */
+  
+  /* Анимация самой печати: запускается ПОСЛЕ того, как блок развернется (через 1.5с) */
+  /* steps(32) — это количество символов в вашей фразе, включая пробелы */
+  animation: 
+    typeEffect 2s steps(32) 1.5s forwards,
+    blinkCursor 0.6s steps(2) infinite;
+  width: 0; /* Изначально текст скрыт, ширина растет при печати */
+}
+
+/* АНИМАЦИИ */
+
+/* 1. Развертывание газетного блока из случайной точки */
+@keyframes spawnSpinNewspaper {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(1080deg);
+    opacity: 1;
+  }
+}
+
+/* 2. Эффект посимвольной печати (увеличиваем ширину блока) */
+@keyframes typeEffect {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* 3. Мигание печатного курсора (каретки) */
+@keyframes blinkCursor {
+  from, to { border-color: transparent; }
+  50% { border-color: #1a1a1a; }
+}
+</style>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  // Появление через 3 секунды
+  setTimeout(() => {
+    const container = document.getElementById('newspaper-container');
+    
+    // Пытаемся найти на странице ваш существующий блок, чтобы встать слева от него
+    // Замените '.your-target-class', если у вашего блока другой класс или id
+    const targetBlock = document.querySelector('.your-target-class') || document.body;
+    const rect = targetBlock.getBoundingClientRect();
+
+    // Задаем координаты: слева от целевого блока
+    // Если целевой блок не найден, скрипт выберет случайное место по высоте
+    if (targetBlock !== document.body) {
+      container.style.top = (rect.top + window.scrollY) + 'px';
+      container.style.left = Math.max(10, rect.left - 450) + 'px'; // 450px — запас под ширину газеты
+    } else {
+      // Резервный вариант: случайное место, если блок на странице не найден
+      const randomY = Math.floor(Math.random() * (window.innerHeight - 150));
+      container.style.top = randomY + 'px';
+      container.style.left = '50px';
+    }
+    
+    // Случайная точка для центра кручения
+    const randomX = Math.floor(Math.random() * window.innerWidth);
+    container.style.transformOrigin = `${randomX}px center`;
+
+    // Активируем блок
+    container.className = 'news-active';
+
+    // Исчезновение без следа ровно через 3 секунды ПОСЛЕ активации
+    setTimeout(() => {
+      container.remove(); 
+    }, 3000);
+
+  }, 3000);
+});
+</script>
 
  </style>
 </head>
@@ -251,6 +379,9 @@ header p {
     /* Финальное положение сбрасывается JS на нужные случайные координаты, 
        поэтому здесь задаем только масштаб и вращение */
     transform: translate(0, 0) scale(1) rotate(1080deg);
+    opacity: 1;
+        /* Сдвиг на координаты, чтобы лента идеально легла наискосок, и фиксация наклона */
+    transform: translate(-30%, 100%) scale(1) rotate(-45deg);
     opacity: 1;
   }
 }
