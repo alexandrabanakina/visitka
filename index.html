@@ -527,7 +527,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* 3. Каждый отдельный слайд */
 .slide {
-    width: 33.333% !important;       /* Занимает ровно 1/3 от всей ленты (то есть весь экран слайдера) */
+    width: 100%      /* Занимает ровно 1/3 от всей ленты (то есть весь экран слайдера) */
     height: 100%;
     flex-shrink: 0;      /* Запрещает картинкам сжиматься */
 }
@@ -537,14 +537,15 @@ window.addEventListener('DOMContentLoaded', () => {
     width: 100%;
     height: 100%;
     object-fit: contain;   /* Картинка заполняет слайд без искажения пропорций */
+     display: block;
 }
 
 /* 5. Логика анимации для 3-х слайдов */
 @keyframes slideAnimation {
-    0%, 25%   { transform: translateX(0); }         /* 1-я картинка стоит */
-    33%, 58%  { transform: translateX(-33.33%); }  /* Переход и показ 2-й картинки */
-    66%, 91%  { transform: translateX(-66.66%); }  /* Переход и показ 3-й картинки */
-    100%      { transform: translateX(0); }         /* Возврат к 1-й картинке */
+    0%, 25%   { transform: translateX(0,0,0); }         /* 1-я картинка стоит */
+    33%, 58%  { transform: translateX(-33.33%,0,0); }  /* Переход и показ 2-й картинки */
+    66%, 91%  { transform: translateX(-66.66%,0,0); }  /* Переход и показ 3-й картинки */
+    100%      { transform: translateX(0,0,0); }         /* Возврат к 1-й картинке */
 }
         .discuss-btn {
     color: #00ff00; /* Ядовито-зеленый текст по умолчанию */
@@ -817,15 +818,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       
        
-<!-- БЛОК МУЗЫКИ ИЗ ВКОНТАКТЕ -->
-<div style="max-width: 400px; margin: 20px auto; padding: 15px; background: var(--surface-color); border: 1px solid var(--border-color); text-align: center;">
-    <div style="font-size: 12px; color: var(--accent-gold); margin-bottom: 10px; letter-spacing: 1px; text-transform: uppercase;">
-        📻 Эфир из ВКонтакте
-    </div>
-    
-    <!-- ВСТАВЬТЕ СЮДА ВАШ СКОПИРОВАННЫЙ КОД IFRAME ИЗ ВК -->
-    <iframe src="https://vk.com/audio474499272_456927680_f976c1e3c7bd560013" width="100%" height="150" frameborder="0" allow="encrypted-media" style="border: 1px solid var(--border-color);"></iframe>
-</div>
+
         <!-- РАЗДЕЛ: КОНТАКТЫ -->
         <section id="contacts">
            
