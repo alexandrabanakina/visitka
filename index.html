@@ -221,22 +221,23 @@ header p {
     neonFlicker 0.3s infinite alternate;
 }
 
-/* Сама строка, которая двигается */
+/* Оболочка для текста */
 .neon-marquee-line {
   display: flex;
-  width: 200%;
-  animation: marqueeMove 15s linear infinite;
+  justify-content: center;
+  width: 100%;
 }
 
-/* Текст внутри строки, который остается неподвижным относительно своей оси */
+/* Стили неподвижного текста */
 .neon-marquee-text {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 4rem;
+  font-size: 32px; /* Размер текста регулируется тут */
   font-weight: bold;
-  color: white;
+  color: #ffffff; /* Цвет текста */
+  text-align: center;
   white-space: nowrap;
-  padding-left: 100%;
 }
+
 
 /* АНИМАЦИИ */
 
