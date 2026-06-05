@@ -181,6 +181,11 @@ header p {
     color: var(--text-main);
     border-bottom-style: solid;
 }
+
+
+ </style>
+</head>
+<body>
 <!-- Контейнер для бегущей строки (изначально скрыт) -->
 <div id="neon-marquee-container" class="neon-hidden">
   <div class="neon-marquee-line">
@@ -272,7 +277,7 @@ header p {
 
 <script>
 window.addEventListener('DOMContentLoaded', () => {
-  // 1. Ждем 10 секунд после загрузки страницы
+  // 1. Ждем 3 секунды (3000 мс) вместо 10 перед появлением строки
   setTimeout(() => {
     const container = document.getElementById('neon-marquee-container');
     
@@ -294,17 +299,12 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       container.style.display = 'none';
       container.remove(); // Полностью удаляем элемент из структуры сайта
-    }, 10000);
+    }, 5000);
 
-  }, 10000);
+  }, 5000);
 });
 </script>
 
-
-
- </style>
-</head>
-<body>
 
 <!-- Музыкальный плеер (Вместо ambient.mp3 укажите имя вашего файла) -->
 <audio id="bgAudio" src="05 Я родился в плохую погоду.mp3" loop></audio>
