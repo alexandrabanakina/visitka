@@ -404,6 +404,22 @@ window.addEventListener('DOMContentLoaded', () => {
 </style>
 
 <script>
+    window.addEventListener('DOMContentLoaded', () => {
+  
+  // ==========================================
+  // ГЛАВНЫЙ ПЕРЕКЛЮЧАТЕЛЬ (ВКЛ / ВЫКЛ)
+  // true  — строка ВКЛЮЧЕНА и появится
+  // false — строка ВЫКЛЮЧЕНА и полностью скрыта
+  // ==========================================
+  const isMarqueeEnabled = true; 
+
+  // Если переключатель выключен, скрипт мгновенно прекращает работу
+  if (!isMarqueeEnabled) {
+    const container = document.getElementById('neon-ribbon-container');
+    if (container) container.remove(); // На всякий случай удаляем из структуры
+    return; 
+  }
+
 window.addEventListener('DOMContentLoaded', () => {
   // 1. Ждем 3 секунды (3000 мс) вместо 10 перед появлением строки
   setTimeout(() => {
