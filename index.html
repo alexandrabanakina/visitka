@@ -519,7 +519,7 @@ window.addEventListener('DOMContentLoaded', () => {
 /* 2. Лента с картинками, которая будет двигаться */
 .slider-track {
     display: flex;
-    width: 300%;         /* Ширина 300%, так как у нас ровно 3 слайда (по 100% на каждый) */
+   transition: transform 0.5s ease-in-out;        /* Ширина 300%, так как у нас ровно 3 слайда (по 100% на каждый) */
     height: 100%;
     /* Подключаем анимацию: имя 'slideAnimation', длительность 12 секунд, бесконечно */
     animation: slideAnimation 12s infinite ease-in-out; 
@@ -527,7 +527,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* 3. Каждый отдельный слайд */
 .slide {
-    width: 100%;         /* Занимает ровно 1/3 от всей ленты (то есть весь экран слайдера) */
+    width: 33.333% !important;       /* Занимает ровно 1/3 от всей ленты (то есть весь экран слайдера) */
     height: 100%;
     flex-shrink: 0;      /* Запрещает картинкам сжиматься */
 }
