@@ -25,12 +25,12 @@ body {
     line-height: 1.6;
     letter-spacing: 0.8px;
      /* Полноэкранное фиксированное фоновое изображение */
-            background-image: linear-gradient(rgba(11, 2, 20, 0.85), rgba(11, 2, 20, 0.85)), 
+            background-image: linear-gradient(rgba(11, 2, 20, 0.5), rgba(11, 2, 20, 0.5)), 
                               url('IMG_1724.PNG');
             background-attachment: fixed;
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
+            background-size: contain;
      
         }
 
@@ -518,8 +518,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* 2. Лента с картинками, которая будет двигаться */
 .slider-track {
-    display: flex;
-   transition: transform 0.5s ease-in-out;        /* Ширина 300%, так как у нас ровно 3 слайда (по 100% на каждый) */
+    display: flex !important;  /* Принудительно выстраивает картинки в горизонтальный ряд */
+    width: 300% !important;    /* Общая ширина ленты (3 слайда по 100% каждый) */
     height: 100%;
     /* Подключаем анимацию: имя 'slideAnimation', длительность 12 секунд, бесконечно */
     animation: slideAnimation 12s infinite ease-in-out; 
