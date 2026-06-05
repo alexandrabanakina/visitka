@@ -508,8 +508,8 @@ window.addEventListener('DOMContentLoaded', () => {
 }
        /* 1. Главный контейнер слайдера */
 .header-slider {
-    width: 600px;        /* Задайте нужную вам ширину слайдера */
-    height: 400px;       /* Задайте нужную вам высоту слайдера */
+    width: 400px;        /* Задайте нужную вам ширину слайдера */
+    height: 300px;       /* Задайте нужную вам высоту слайдера */
     margin: 0 auto;      /* Строго по центру страницы */
     overflow: hidden;    /* Прячет остальные 2 картинки, которые не поместились */
     position: relative;
@@ -536,7 +536,7 @@ window.addEventListener('DOMContentLoaded', () => {
 .slide img {
     width: 100%;
     height: 100%;
-    object-fit: cover;   /* Картинка заполняет слайд без искажения пропорций */
+    object-fit: contain;   /* Картинка заполняет слайд без искажения пропорций */
 }
 
 /* 5. Логика анимации для 3-х слайдов */
