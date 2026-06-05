@@ -181,7 +181,124 @@ header p {
     color: var(--text-main);
     border-bottom-style: solid;
 }
+<!-- Контейнер для бегущей строки (изначально скрыт) -->
+<div id="neon-marquee-container" class="neon-hidden">
+  <div class="neon-marquee-line">
+    <div class="neon-marquee-text">
+      ВАШ ТЕКСТ ТУТ • ВАШ ТЕКСТ ТУТ • ВАШ ТЕКСТ ТУТ • ВАШ ТЕКСТ ТУТ • ВАШ ТЕКСТ ТУТ • ВАШ ТЕКСТ ТУТ
+    </div>
+  </div>
+</div>
 
+<style>
+/* Базовый скрытый контейнер */
+.neon-hidden {
+  display: none;
+}
+
+/* Стили плеера/строки при активации */
+#neon-marquee-container.neon-active {
+  display: block;
+  position: fixed;
+  z-index: 999999; /* Перекрывает абсолютно все блоки */
+  width: 100vw;
+  height: 80px;
+  background: #000000;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  
+  /* Эффект мигающего черного неона (свечение вокруг строки) */
+  box-shadow: 0 0 20px #000, 0 0 40px #000;
+  animation: 
+    spawnSpin 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards, 
+    neonFlicker 0.3s infinite alternate;
+}
+
+/* Сама строка, которая двигается */
+.neon-marquee-line {
+  display: flex;
+  width: 200%;
+  animation: marqueeMove 15s linear infinite;
+}
+
+/* Текст внутри строки, который остается неподвижным относительно своей оси */
+.neon-marquee-text {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  white-space: nowrap;
+  padding-left: 100%;
+}
+
+/* АНИМАЦИИ */
+
+/* 1. Появление: развертывание из точки со скручиванием */
+@keyframes spawnSpin {
+  0% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    /* Финальное положение сбрасывается JS на нужные случайные координаты, 
+       поэтому здесь задаем только масштаб и вращение */
+    transform: translate(0, 0) scale(1) rotate(1080deg);
+    opacity: 1;
+  }
+}
+
+/* 2. Мигающий черный неон (эффект пульсации темноты и зловещего света) */
+@keyframes neonFlicker {
+  0%, 100% {
+    box-shadow: 0 0 15px #000, inset 0 0 15px #000, 0 0 30px #111;
+    border-top: 3px solid #111;
+    border-bottom: 3px solid #111;
+  }
+  50% {
+    box-shadow: 0 0 35px #000, inset 0 0 25px #000, 0 0 60px #222;
+    border-top: 3px solid #333;
+    border-bottom: 3px solid #333;
+  }
+}
+
+/* 3. Движение бегущей строки */
+@keyframes marqueeMove {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+</style>
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  // 1. Ждем 10 секунд после загрузки страницы
+  setTimeout(() => {
+    const container = document.getElementById('neon-marquee-container');
+    
+    // Генерируем случайную точку на экране для старта (в пикселях)
+    const randomX = Math.floor(Math.random() * window.innerWidth);
+    const randomY = Math.floor(Math.random() * window.innerHeight);
+    
+    // Задаем начальную случайную точку появления
+    container.style.top = randomY + 'px';
+    container.style.left = '0px'; // Чтобы строка легла по всей ширине экрана
+    
+    // Динамически правим точку трансформации (origin), откуда начнется кручение
+    container.style.transformOrigin = `${randomX}px center`;
+
+    // Активируем строку (запускается анимация spawnSpin)
+    container.className = 'neon-active';
+
+    // 2. Ровно через 10 секунд строка мгновенно исчезает
+    setTimeout(() => {
+      container.style.display = 'none';
+      container.remove(); // Полностью удаляем элемент из структуры сайта
+    }, 10000);
+
+  }, 10000);
+});
+</script>
 
 
 
