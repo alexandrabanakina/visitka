@@ -181,139 +181,94 @@ header p {
     color: var(--text-main);
     border-bottom-style: solid;
 }
-<!-- Контейнер с газетной подложкой и текстом печатной машинки -->
+
+
+ </style>
+</head>
+<body>
+    <!-- Контейнер с газетной подложкой и текстом печатной машинки -->
+<!-- Изначально он полностью скрыт -->
 <div id="newspaper-container" class="news-hidden">
   <div class="news-paper-bg">
-    <!-- Текст, который будет "печататься" -->
     <span class="typewriter-text">Клетчатка скам и свежий дискурс</span>
   </div>
 </div>
 
 <style>
-/* Скрытое состояние */
+/* Базовое скрытое состояние */
 .news-hidden {
   display: none;
 }
 
-/* Активное состояние блока */
+/* Активное состояние блока (без скручивания) */
 #newspaper-container.news-active {
   display: block;
   position: fixed;
-  z-index: 999999; /* Перекрывает все блоки */
-  /* Размеры блока подгоняются под длину текста */
+  z-index: 999999;
   width: auto; 
   height: auto;
   padding: 15px 25px;
   box-sizing: border-box;
   
-  /* Эффект подложки из старой газетной бумаги */
-  background-color: #f2ebd9; /* Цвет пожелтевшей бумаги */
+  /* Газетная текстура */
+  background-color: #f2ebd9; 
   background-image: 
     radial-gradient(rgba(0,0,0,0.05) 1px, transparent 0),
     linear-gradient(rgba(0,0,0,0.02) 1px, transparent 0);
   background-size: 4px 4px, 100% 20px;
   
-  /* Газетные элементы: легкая текстура, тени и рваная черная рамка */
   border: 2px dashed #2b2b2b;
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
   
-  /* Эффект кручения и развертывания при появлении за 1.5 секунды */
-  animation: spawnSpinNewspaper 1.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  /* Плавное проявление самого блока за 0.3 секунды без вращения */
+  animation: fadeInNewspaper 0.3s ease-out forwards;
 }
 
-/* Контейнер для выравнивания */
 .news-paper-bg {
   display: flex;
   align-items: center;
 }
 
-/* Стили и анимация печатной машинки */
+/* Стили печатной машинки */
 .typewriter-text {
-  font-family: 'Courier New', Courier, monospace; /* Классический шрифт машинки */
+  font-family: 'Courier New', Courier, monospace; 
   font-size: 24px;
   font-weight: bold;
-  color: #1a1a1a; /* Цвет старых чернил */
+  color: #1a1a1a; 
   white-space: nowrap;
-  overflow: hidden; /* Скрывает недописанную часть текста */
-  border-right: 3px solid #1a1a1a; /* Каретка/курсор печатной машинки */
-  
-  /* Анимация самой печати: запускается ПОСЛЕ того, как блок развернется (через 1.5с) */
-  /* steps(32) — это количество символов в вашей фразе, включая пробелы */
+  overflow: hidden; 
+  border-right: 3px solid #1a1a1a; /* Курсор */
+  width: 0; 
+}
+
+/* Этот класс добавляется скриптом, когда блок уже показан, чтобы начать печать */
+#newspaper-container.news-active .typewriter-text {
+  /* steps(32) — по количеству символов во фразе */
   animation: 
-    typeEffect 2s steps(32) 1.5s forwards,
+    typeEffect 2s steps(32) 0.3s forwards, /* Задержка 0.3с, пока проявляется подложка */
     blinkCursor 0.6s steps(2) infinite;
-  width: 0; /* Изначально текст скрыт, ширина растет при печати */
 }
 
 /* АНИМАЦИИ */
 
-/* 1. Развертывание газетного блока из случайной точки */
-@keyframes spawnSpinNewspaper {
-  0% {
-    transform: scale(0) rotate(0deg);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) rotate(1080deg);
-    opacity: 1;
-  }
+/* Плавное появление подложки без эффекта джина/скручивания */
+@keyframes fadeInNewspaper {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-/* 2. Эффект посимвольной печати (увеличиваем ширину блока) */
+/* Эффект посимвольной печати */
 @keyframes typeEffect {
   from { width: 0; }
   to { width: 100%; }
 }
 
-/* 3. Мигание печатного курсора (каретки) */
+/* Мигание курсора */
 @keyframes blinkCursor {
   from, to { border-color: transparent; }
   50% { border-color: #1a1a1a; }
 }
 </style>
-
-<script>
-window.addEventListener('DOMContentLoaded', () => {
-  // Появление через 3 секунды
-  setTimeout(() => {
-    const container = document.getElementById('newspaper-container');
-    
-    // Пытаемся найти на странице ваш существующий блок, чтобы встать слева от него
-    // Замените '.your-target-class', если у вашего блока другой класс или id
-    const targetBlock = document.querySelector('.your-target-class') || document.body;
-    const rect = targetBlock.getBoundingClientRect();
-
-    // Задаем координаты: слева от целевого блока
-    // Если целевой блок не найден, скрипт выберет случайное место по высоте
-    if (targetBlock !== document.body) {
-      container.style.top = (rect.top + window.scrollY) + 'px';
-      container.style.left = Math.max(10, rect.left - 450) + 'px'; // 450px — запас под ширину газеты
-    } else {
-      // Резервный вариант: случайное место, если блок на странице не найден
-      const randomY = Math.floor(Math.random() * (window.innerHeight - 150));
-      container.style.top = randomY + 'px';
-      container.style.left = '50px';
-    }
-    
-    // Случайная точка для центра кручения
-    const randomX = Math.floor(Math.random() * window.innerWidth);
-    container.style.transformOrigin = `${randomX}px center`;
-
-    // Активируем блок
-    container.className = 'news-active';
-
-    // Исчезновение без следа ровно через 3 секунды ПОСЛЕ активации
-    setTimeout(() => {
-      container.remove(); 
-    }, 3000);
-
-  }, 3000);
-});
-</script>
-
- </style>
-</head>
-<body>
 <!-- Контейнер для бегущей строки (изначально скрыт) -->
 <div id="neon-marquee-container" class="neon-hidden">
   <div class="neon-marquee-line">
@@ -411,7 +366,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // true  — строка ВКЛЮЧЕНА и появится
   // false — строка ВЫКЛЮЧЕНА и полностью скрыта
   // ==========================================
-  const isMarqueeEnabled = true; 
+  const isMarqueeEnabled = false; 
 
   // Если переключатель выключен, скрипт мгновенно прекращает работу
   if (!isMarqueeEnabled) {
@@ -642,7 +597,29 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 }
     </style>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  
+  // НАСТРОЙКА: Замените '.play-button' на класс или ID вашей кнопки Play в плеере
+  const playButton = document.querySelector('.play-button');
+  const container = document.getElementById('newspaper-container');
 
+  if (playButton && container) {
+    // Вешаем событие клика на кнопку плеера
+    playButton.addEventListener('click', () => {
+      
+      // Позиционируем блок слева от кнопки плеера (или в любое нужное место)
+      const rect = playButton.getBoundingClientRect();
+      container.style.top = (rect.top + window.scrollY - 15) + 'px'; // Выравниваем по высоте кнопки
+      container.style.left = Math.max(10, rect.left - 480) + 'px';   // Сдвигаем левее кнопки на 480px
+
+      // Включаем отображение (запустится анимация появления и печати текста)
+      container.className = 'news-active';
+
+    });
+  }
+});
+</script>
     <script>
         const marquee = document.getElementById('randomMarquee');
 
