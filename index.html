@@ -218,15 +218,14 @@ header p {
     padding: 0 !important;
     margin: 0 !important;
 }
-
- </style>
-    .isolated-discourse-column p {
+ .isolated-discourse-column p {
     font-family: 'Courier New', Courier, monospace !important; /* Шрифт печатной машинки */
     font-size: 15px !important;
     line-height: 1.5 !important;
     color: var(--text-main) !important; /* Использует цвет вашего сайта */
     margin: 0 0 12px 0 !important; /* Отступы только между абзацами */
-}
+} </style>
+   
 <style>
 /* Базовое скрытое состояние */
 .news-hidden {
@@ -551,8 +550,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 /* 2. Лента с картинками, которая будет двигаться */
 .slider-track {
-    display: flex !important;  /* Принудительно выстраивает картинки в горизонтальный ряд */
-    width: 300% !important;    /* Общая ширина ленты (3 слайда по 100% каждый) */
+
+    width: 100% !important;    /* Общая ширина ленты (3 слайда по 100% каждый) */
     height: 100%;
     /* Подключаем анимацию: имя 'slideAnimation', длительность 12 секунд, бесконечно */
     animation: slideAnimation 12s infinite ease-in-out; 
